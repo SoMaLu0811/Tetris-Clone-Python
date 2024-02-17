@@ -1,7 +1,5 @@
 import pygame,sys
 from Grid import Grid
-pygame.init()
-dark_blue=(44,44,127)
 
 #Tela do jogo
 
