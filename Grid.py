@@ -1,3 +1,4 @@
+import pygame
 #Grid(malha quadriculada):
 class Grid:
     def __init__(self):
@@ -6,13 +7,15 @@ class Grid:
         self.cell_size=30
         self.grid=[[0 for j in range(self.num_cols)]for i in range(self.num_rows)]
         self.colors=self.get_cell_c()
+    
     def print_grid(self):
         for row in range(self.num_cols):
             for column in range(self.num_cols):
                 print(self.grid[row][column],end=' ')
             print()
-                
-    def get_cell_c(self):
+
+    #cor das células            
+    def get_cell_c(self): 
         dark_grey=(26, 31, 40)
         green=(47, 230, 23)
         red=(232, 18, 18)
@@ -23,6 +26,12 @@ class Grid:
         blue=(13, 64, 216)
         return[dark_grey,green,red,orange,yellow,purple,cyan,blue]
     
-    def draw(self):
-        
+    #desenho da malha
+    def draw(self,screen):
+        for row in range(self.num_rows):
+            for column in range(self.num_cols):
+                cell_valor=self.grid[row][column]
+                cell_rect=pygame.Rect(column*self.cell_size,row*self.cell_size+1,self.cell_size-1,self.cell_size-1)
+                pygame.draw.rect(screen,self.colors[cell_valor],cell_rect)
+    
     
